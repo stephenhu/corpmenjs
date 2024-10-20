@@ -1,0 +1,24 @@
+{
+  "name": "corpmenjs",
+  "version": "1.0.0",
+  "description": "js library for corpmen",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/stephenhu/corpmenjs"
+  },
+  "author": "Stephen Hu",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  }
+}
