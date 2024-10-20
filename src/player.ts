@@ -7,14 +7,17 @@ import { randomAttr } from "./generator";
 
 export class Player {
 
-  private _name:  string;
+  private _id: string;
+  private _first:  string;
+  private _last:  string;
   private _attrs:  Attributes = new Attributes();
   private _meters:  Meters = new Meters();
 
+  constructor(first: string, last: string) {
 
-  constructor(name: string) {
-
-    this._name = name;
+    this._first = first;
+    this._last = last;
+    this._id = `${first}.${last}`
 
   } // constructor
 
@@ -56,13 +59,21 @@ export class Player {
 
   } // load
 
-  set name(name: string) {
-    this._name = name;
-  } // name
+  set first(first: string) {
+    this._first = first;
+  } // first
 
-  get name(): string {
-    return this._name;
-  } // name
+  get first(): string {
+    return this._first;
+  } // first
+
+  set last(last: string) {
+    this._last = last;
+  } // last
+
+  get last(): string {
+    return this._last;
+  } // last
 
   set attrs(attrs: Attributes) {
     this._attrs = attrs;
@@ -80,5 +91,8 @@ export class Player {
     return this._meters;
   } // meters
 
+  get id(): string {
+    return this._id;
+  } // id
 
 } // Player

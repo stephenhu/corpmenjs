@@ -18,7 +18,7 @@ export function randomAttr(): number {
 
 export function meterUp(pct: number): number {
 
-  if (pct < 0.0) {
+  if (pct < 0.0 || pct > 100.0) {
     throw Error("Percentage invalid");  
   } else {
     return Math.floor(METER_RANGE * pct);
