@@ -11,6 +11,10 @@ looks similar to a key value store.
 since only player information needs to be persisted, this should periodically
 be stored to localstorage which should persist even after the browser closes.
 
-essentially a json structure should be overwritten each time.
+essentially a json structure should be overwritten each time to local storage to keep the latest state.
+
+## initialization
+
+there will be a lot of characters and players needed for the story that will be initialized upon start of the game.
 
 * https://blog.openreplay.com/localstorage-vs-sessionstorage--a-comprehensive-comparison/

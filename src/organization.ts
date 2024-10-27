@@ -1,29 +1,34 @@
-/* corpmenjs directory.ts */
+/* corpmenjs organization.ts */
 
 import Graph from "graphology";
-
 
 export const GRAPH_TYPE             = "undirected";
 
 export const ATTR_STATUS            = "status";
 export const ATTR_MANAGER           = "manager";
+export const ATTR_COMPANY_NAME      = "company";
+
+export const BIG_CORP               = "Big Corporation";
+export const PIXEL_CORP             = "Pixel Corporation";
 
 export const MAX_STATUS             = 600;
 export const MIN_STATUS             = 0;
-
 
 export class Organization {
 
   private _employees: Graph;
 
-  constructor() {
+  constructor(name: string) {
     
     this._employees = new Graph({type: GRAPH_TYPE});
 
+    this._employees.setAttribute(ATTR_COMPANY_NAME,
+      name);
+
   } // constructor
 
-  set employees(company: Graph) {
-    this._employees = company;
+  set employees(employees: Graph) {
+    this._employees = employees;
   } // employees
 
   get employees(): Graph {

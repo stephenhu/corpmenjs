@@ -1,4 +1,4 @@
-/* corpmenjs player.ts */
+/* corpmenjs employee.ts */
 
 import { Attributes } from "./attributes";
 import { Meters } from "./meters";
