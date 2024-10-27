@@ -6,6 +6,7 @@ export class Meters {
   private _liked: number = 0;
   private _humility: number = 0;
   private _moral: number = 0;
+  private _morale: number = 0;
   private _honor: number = 0;
   private _feared: number = 0;
   private _decisiveness: number = 0;
@@ -39,6 +40,14 @@ export class Meters {
   get moral(): number {
     return this._moral;
   } // moral
+
+  set morale(morale: number) {
+    this._morale = morale;
+  } // moral
+
+  get morale(): number {
+    return this._morale;
+  } // morale
 
   set honor(honor: number) {
     this._honor = honor;

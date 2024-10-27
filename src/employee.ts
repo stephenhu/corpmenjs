@@ -5,11 +5,12 @@ import { Meters } from "./meters";
 import { randomAttr } from "./generator";
 
 
-export class Player {
+export class Employee {
 
   private _id: string;
   private _first:  string;
   private _last:  string;
+  private _isManager: boolean;
   private _attrs:  Attributes = new Attributes();
   private _meters:  Meters = new Meters();
 
@@ -18,6 +19,7 @@ export class Player {
     this._first = first;
     this._last = last;
     this._id = `${first}.${last}`
+    this._isManager = false;
 
   } // constructor
 
@@ -75,6 +77,14 @@ export class Player {
     return this._last;
   } // last
 
+  set isManager(isManager: boolean) {
+    this._isManager = isManager;
+  } // isManager
+
+  get isManager(): boolean {
+    return this._isManager;
+  } // isManager
+
   set attrs(attrs: Attributes) {
     this._attrs = attrs;
   } // attrs
@@ -95,4 +105,4 @@ export class Player {
     return this._id;
   } // id
 
-} // Player
+} // Employee

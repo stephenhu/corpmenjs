@@ -1,12 +1,12 @@
 import "../src/attributes";
 import { randomAttr } from "../src/generator";
 import "../src/meters";
-import { Player } from "../src/player";
+import { Employee } from "../src/employee";
 
 
 describe("testing player generation", () => {
 
-  const p = new Player("stephen", "hu");
+  const p = new Employee("stephen", "hu");
   
   test("instatiation of class should not be null", () => {
     expect(p).not.toBeNull()
