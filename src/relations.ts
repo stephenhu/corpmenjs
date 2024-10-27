@@ -2,106 +2,89 @@
 
 import Graph from "graphology";
 
-export const ATTR_BOND          = "bond";
+
+export const GRAPH_TYPE             = "undirected";
+
+export const ATTR_STATUS            = "status";
+
+export const MAX_STATUS             = 600;
+export const MIN_STATUS             = 0;
+
 
 export class Relations {
 
-  private _affinity: Graph;
+  private _employees: Graph;
 
   constructor() {
     
-    this._affinity = new Graph({type: "undirected"});
+    this._employees = new Graph({type: GRAPH_TYPE});
 
   } // constructor
 
-  set affinity(affinity: Graph) {
-    this._affinity = affinity;
-  } // affinity
+  set employees(company: Graph) {
+    this._employees = company;
+  } // employees
 
-  get affinity(): Graph {
-    return this._affinity;
-  } // affinity
+  get employees(): Graph {
+    return this._employees;
+  } // employees
 
-  add(id: string) {
+  addEmployee(id: string) {
 
-    if (!this._affinity.hasNode(id)) {
+    if (!this._employees.hasNode(id)) {
 
-      this._affinity.addNode(id);
-
-      this.addRelations(id);
+      this._employees.addNode(id);
     
     }
 
-  } // add
+  } // addEmployee
 
-  remove(id: string) {
-    this._affinity.dropNode(id);
-  } // remove
+  removeEmployee(id: string) {
+    this._employees.dropNode(id);
+  } // removeEmployee
 
-  addRelations(id: string) {
+  create(id1: string, id2: string) {
 
-    let employees = this._affinity.nodes();
-
-    employees.forEach(e => {
-
-      if (e !== id) {
-
-        if (!this._affinity.hasEdge(id, e)) {
-          
-          this._affinity.addEdge(id, e, {
-            ATTR_BOND: 0
-          });
-
-        }
-
-      } 
-
-    });
-
-  } // addRelations
-
-  up(id1: string, id2: string, v: number) {
-
-    if (v > 0 && v <= 100) {
+    if (!this._employees.hasEdge(id1, id2)) {
       
-      let c = this._affinity.getEdgeAttribute(id1, id2, ATTR_BOND);
-      
-      if (c !== undefined) {
-        this._affinity.setEdgeAttribute(id1, id2, ATTR_BOND, c + v);
-      } else {
-        this._affinity.setEdgeAttribute(id1, id2, ATTR_BOND, 0);
-      }
+      this._employees.addEdge(id1, id2, {
+        "status": 0
+      });
 
-    } else {
-      throw Error("Cannot increment by " + v);
     }
 
-  } // up
+  } // create
 
-  down(id1: string, id2: string, v: number) {
+  get(id1: string, id2: string): number {
 
-    if (v > 0 && v <= 100) {
-      
-      let c = this._affinity.getEdgeAttribute(id1, id2, ATTR_BOND);
-      
-      if (c !== undefined) {
-
-        let t = c - v;
-
-        if (t > 0) {
-          this._affinity.setEdgeAttribute(id1, id2, ATTR_BOND, t);
-        } else {
-          this._affinity.setEdgeAttribute(id1, id2, ATTR_BOND, 0);  
-        }
-
-      } else {
-        this._affinity.setEdgeAttribute(id1,id2, ATTR_BOND, 0);
-      }
-
-    } else {
-      throw Error("Cannot increment by " + v);
+    if (!this._employees.hasEdge(id1, id2)) {      
+      this.create(id1, id2);
     }
 
-  } // down
+    return this._employees.getEdgeAttribute(id1, id2, ATTR_STATUS);
+    
+  } // get
+
+  increment(id1: string, id2: string, v: number) {
+
+    let c = this._employees.getEdgeAttribute(id1, id2, ATTR_STATUS);
+      
+    if (c !== undefined) {
+
+      let total = c + v;
+
+      if (total > MAX_STATUS) {
+        total = MAX_STATUS;
+      } else if (total < MIN_STATUS) {
+        total = MIN_STATUS;
+      }
+
+      this._employees.setEdgeAttribute(id1, id2, ATTR_STATUS, total);
+    
+    } else {
+      this.create(id1, id2);
+    }
+
+  } // increment
 
 } // Relations
