@@ -8,7 +8,7 @@ export const ATTR_STATUS            = "status";
 export const ATTR_MANAGER           = "manager";
 export const ATTR_COMPANY_NAME      = "company";
 
-export const BIG_CORP               = "Big Corporation";
+export const BIG_CORP               = "Big, Inc";
 export const PIXEL_CORP             = "Pixel Corporation";
 
 export const MAX_STATUS             = 600;

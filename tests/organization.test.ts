@@ -1,4 +1,4 @@
-import { Organization } from "../src/organization";
+import { Organization, PIXEL_CORP, BIG_CORP } from "../src/organization";
 
 const emps = ["stephen", "becky", "laura", "joe", "chris",
   "james", "deandre"];
@@ -6,7 +6,7 @@ const emps = ["stephen", "becky", "laura", "joe", "chris",
 
 describe("testing player relation", () => {
 
-  let r = new Organization();
+  let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
     r.addEmployee(e);  
@@ -22,7 +22,7 @@ describe("testing player relation", () => {
 
 describe("increment status by 10", () => {
 
-  let r = new Organization();
+  let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
     r.addEmployee(e);  
@@ -40,7 +40,7 @@ describe("increment status by 10", () => {
 
 describe("increment by 5 decrement status by 10", () => {
 
-  let r = new Organization();
+  let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
     r.addEmployee(e);  
@@ -59,7 +59,7 @@ describe("increment by 5 decrement status by 10", () => {
 
 describe("add direct reports", () => {
 
-  let r = new Organization();
+  let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
     r.addEmployee(e);  
@@ -80,7 +80,7 @@ describe("add direct reports", () => {
 
 describe("no direct reports", () => {
 
-  let r = new Organization();
+  let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
     r.addEmployee(e);  
