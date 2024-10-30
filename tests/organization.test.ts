@@ -1,7 +1,18 @@
 import { Organization, PIXEL_CORP, BIG_CORP } from "../src/organization";
 
-const emps = ["stephen", "becky", "laura", "joe", "chris",
-  "james", "deandre"];
+const emps = [
+  {first: "Stephen", last: "Hu"},
+  {first: "Becky", last: "smith"},
+  {first: "Laura", last: "Kim"},
+  {first: "Joe", last: "Ishikawa"},
+  {first: "Chris", last: "McPherson"},
+  {first: "James", last: "Zhang"},
+  {first: "Deandre", last: "johnson"},
+  {first: "Dimitry", last: "Simitov"},
+  {first: "Marsh", last: "Whitmore"},
+  {first: "Sylvia", last: "Morgan"},
+  {first: "Abhijit", last: "Patel"}
+];
 
 
 describe("testing player relation", () => {
@@ -9,13 +20,13 @@ describe("testing player relation", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e);  
+    r.addEmployee(e.first, e.last);  
   })
   
-  r.createRelation("becky", "laura");
+  r.createRelation("becky.smith", "laura.kim");
 
   test("get status between becky and laura", () => {
-    expect(r.getStatus("becky", "laura")).toEqual(0)
+    expect(r.getStatus("becky.smith", "laura.kim")).toEqual(0)
   });
 
 });
@@ -25,15 +36,15 @@ describe("increment status by 10", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e);  
+    r.addEmployee(e.first, e.last);  
   })
   
-  r.createRelation("becky", "laura");
+  r.createRelation("becky.smith", "laura.kim");
 
-  r.incrementStatus("becky", "laura", 10);
+  r.incrementStatus("becky.smith", "laura.kim", 10);
 
   test("get status between becky and laura", () => {
-    expect(r.getStatus("becky", "laura")).toEqual(10)
+    expect(r.getStatus("becky.smith", "laura.kim")).toEqual(10)
   });
 
 });
@@ -43,16 +54,16 @@ describe("increment by 5 decrement status by 10", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e);  
+    r.addEmployee(e.first, e.last);  
   })
 
-  r.createRelation("becky", "laura");
+  r.createRelation("becky.smith", "laura.kim");
 
-  r.incrementStatus("becky", "laura", 5);
-  r.incrementStatus("becky", "laura", -10);
+  r.incrementStatus("becky.smith", "laura.kim", 5);
+  r.incrementStatus("becky.smith", "laura.kim", -10);
 
   test("get status between becky and laura", () => {
-    expect(r.getStatus("becky", "laura")).toEqual(0)
+    expect(r.getStatus("becky.smith", "laura.kim")).toEqual(0)
   });
 
 });
@@ -62,18 +73,20 @@ describe("add direct reports", () => {
   let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e);  
+    r.addEmployee(e.first, e.last);  
   });
 
-  r.createRelation("becky", "laura");
+  r.createRelation("becky.smith", "laura.kim");
 
-  r.addDirectReport("stephen", "james");
-  r.addDirectReport("stephen", "laura");
+  r.addDirectReport("stephen.hu", "james.zhang");
+  r.addDirectReport("stephen.hu", "laura.kim");
+
+  let directs = r.getDirectReports("stephen.hu");
 
   test("get status between becky and laura", () => {
-    expect(r.getDirectReports("stephen").length).toEqual(2);
-    expect(r.getDirectReports("stephen")).toContain("laura");
-    expect(r.getDirectReports("stephen")).toContain("james");
+    expect(directs.length).toEqual(2);
+    expect(directs).toContain("laura.kim");
+    expect(directs).toContain("james.zhang");
   });
 
 });
@@ -83,11 +96,11 @@ describe("no direct reports", () => {
   let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e);  
+    r.addEmployee(e.first, e.last);
   });
 
   test("get status between becky and laura", () => {
-    expect(r.getDirectReports("stephen").length).toEqual(0);
+    expect(r.getDirectReports("stephen.hu").length).toEqual(0);
   });
 
 });

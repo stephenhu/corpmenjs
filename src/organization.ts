@@ -35,18 +35,46 @@ export class Organization {
     return this._employees;
   } // employees
 
-  addEmployee(id: string) {
+  getId(first: string, last: string): string {
 
-    if (!this._employees.hasNode(id)) {
+    // TODO: add filter for bad characters, should only include a-zA-Z
 
-      this._employees.addNode(id);
-    
+    if (first === null || first === undefined || first.length === 0) {
+      throw new Error("Invalid employee name");
+    }
+
+    return `${first.toLowerCase()}.${last.toLowerCase()}`;
+
+  } // getId
+
+  addEmployee(first: string, last: string) {
+
+    try {
+
+      let id = this.getId(first, last);
+
+      if (!this._employees.hasNode(id)) {
+        this._employees.addNode(id);
+      }
+  
+    } catch(e) {
+      console.log(e);
     }
 
   } // addEmployee
 
-  removeEmployee(id: string) {
-    this._employees.dropNode(id);
+  removeEmployee(first: string, last: string) {
+
+    try {
+
+      let id = this.getId(first, last);
+
+      this._employees.dropNode(id);
+
+    } catch(e) {
+      console.log(e);
+    }
+
   } // removeEmployee
 
   createRelation(id1: string, id2: string) {

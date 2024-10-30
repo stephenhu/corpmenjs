@@ -51,7 +51,8 @@ export class Story {
 
     const c1 = this.getCompany(PIXEL_CORP);
 
-    c1.addEmployee("");
+    c1.addEmployee("stephen", "hu");
+    c1.addEmployee("marsh", "whitman");
   
   } // seed
 
