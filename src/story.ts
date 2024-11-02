@@ -2,7 +2,7 @@
 
 import { Chapter } from "./chapter";
 import { Employee } from "./employee";
-import { BIG_CORP, Organization, PIXEL_CORP } from "./organization";
+import { BIG_INC, Organization, PIXEL_CORP } from "./organization";
 import { Cast } from "./characters";
 
 export class Story {
@@ -67,7 +67,7 @@ export class Story {
     
     this.addCompany(PIXEL_CORP);
 
-    this.addCompany(BIG_CORP);
+    this.addCompany(BIG_INC);
 
   } // loadCompanies
 

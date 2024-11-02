@@ -1,4 +1,4 @@
-import { Organization, PIXEL_CORP, BIG_CORP } from "../src/organization";
+import { Organization, PIXEL_CORP, BIG_INC } from "../src/organization";
 import { Employee } from "../src/employee";
 
 const emps = [
@@ -18,7 +18,7 @@ const emps = [
 
 describe("testing player relation", () => {
 
-  let r = new Organization(BIG_CORP);
+  let r = new Organization(BIG_INC);
 
   emps.forEach((e) => {
 
@@ -38,7 +38,7 @@ describe("testing player relation", () => {
 
 describe("increment status by 10", () => {
 
-  let r = new Organization(BIG_CORP);
+  let r = new Organization(BIG_INC);
 
   emps.forEach((e) => {
 
@@ -60,7 +60,7 @@ describe("increment status by 10", () => {
 
 describe("increment by 5 decrement status by 10", () => {
 
-  let r = new Organization(BIG_CORP);
+  let r = new Organization(BIG_INC);
 
   emps.forEach((e) => {
 

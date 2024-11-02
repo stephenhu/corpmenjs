@@ -9,12 +9,12 @@ describe("testing generator increment", () => {
   s.loadCompanies();
   s.loadCharacters();
 
-  test("instatiation of class should not be null", () => {
-    expect((0.1)).toBeGreaterThanOrEqual(0)
+  test("2 companies loaded", () => {
+    expect(s.companies.length).toEqual(2)
   });
 
-  test("random intelligence greater equal to 0", () => {
-    expect((0.0125)).toBeGreaterThan(0)
+  test("x employees loaded", () => {
+    expect(s.companies[0].employees.order).toEqual(10)
   });
 
 });

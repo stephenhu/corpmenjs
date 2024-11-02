@@ -10,8 +10,8 @@ export const ATTR_STATUS            = "status";
 export const ATTR_MANAGER           = "manager";
 export const ATTR_COMPANY_NAME      = "company";
 
-export const BIG_CORP               = "Big, Inc";
-export const PIXEL_CORP             = "Pixel Corporation";
+export const BIG_INC                = "Big, Inc";
+export const PIXEL_CORP             = "Pixel Corp";
 
 export const MAX_STATUS             = 600;
 export const MIN_STATUS             = 0;
@@ -137,6 +137,7 @@ export class Organization {
 
   } // onboard
 
+  /*
   initPlayerAttributes(e: Employee) {
 
     let id = this.getId(e.first, e.last);
@@ -171,6 +172,7 @@ export class Organization {
     }
 
   } // initPlayerAttributes
+*/
 
   createRelation(id1: string, id2: string) {
 
