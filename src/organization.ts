@@ -1,5 +1,7 @@
 /* corpmenjs organization.ts */
 
+import { Employee } from "./employee";
+
 import Graph from "graphology";
 
 export const GRAPH_TYPE             = "undirected";
@@ -17,9 +19,12 @@ export const MIN_STATUS             = 0;
 export class Organization {
 
   private _employees: Graph;
+  private _name: string;
 
   constructor(name: string) {
     
+    this._name = name;
+
     this._employees = new Graph({type: GRAPH_TYPE});
 
     this._employees.setAttribute(ATTR_COMPANY_NAME,
@@ -35,6 +40,14 @@ export class Organization {
     return this._employees;
   } // employees
 
+  set name(name: string) {
+    this._name = name;
+  } // name
+
+  get name(): string {
+    return this._name;
+  } // name
+
   getId(first: string, last: string): string {
 
     // TODO: add filter for bad characters, should only include a-zA-Z
@@ -47,14 +60,48 @@ export class Organization {
 
   } // getId
 
-  addEmployee(first: string, last: string) {
+  addEmployee(e: Employee) {
 
     try {
 
-      let id = this.getId(first, last);
-
-      if (!this._employees.hasNode(id)) {
-        this._employees.addNode(id);
+      if (!this._employees.hasNode(e.id)) {
+        this._employees.addNode(e.id, {
+          first: e.first,
+          last: e.last,
+          age: e.age,
+          title: e.title,
+          level: e.level,
+          salary: e.salary,
+          shares: e.shares,
+          isManager: e.isManager,
+          manager: e.manager,
+          intelligence: e.attrs.intelligence,
+          charisma: e.attrs.charisma,
+          oration: e.attrs.oration,
+          resilience: e.attrs.resilience,
+          awareness: e.attrs.awareness,
+          analysis: e.attrs.analysis,
+          learning: e.attrs.learning,
+          abstraction: e.attrs.abstraction,
+          execution: e.attrs.execution,
+          leadership: e.attrs.leadership,
+          management: e.attrs.management,
+          social: e.attrs.social,
+          persistence: e.attrs.persistence,
+          integrity: e.attrs.integrity,
+          stamina: e.attrs.stamina,
+          loyalty: e.attrs.loyalty,
+          luck: e.attrs.luck,
+          liked: e.meters.liked,
+          humility: e.meters.humility,
+          moral: e.meters.moral,
+          morale: e.meters.morale,
+          honor: e.meters.honor,
+          feared: e.meters.feared,
+          decisiveness: e.meters.decisiveness,
+          corruptability: e.meters.corruptability,
+          deceptiveness: e.meters.deceptiveness
+        });
       }
   
     } catch(e) {
@@ -63,13 +110,10 @@ export class Organization {
 
   } // addEmployee
 
-  removeEmployee(first: string, last: string) {
+  removeEmployee(e: Employee) {
 
     try {
-
-      let id = this.getId(first, last);
-
-      this._employees.dropNode(id);
+      this._employees.dropNode(e.id);
 
     } catch(e) {
       console.log(e);
@@ -77,11 +121,65 @@ export class Organization {
 
   } // removeEmployee
 
+  onboard(e: any) {
+
+    let id = this.getId(e.first, e.last);
+
+    try {
+
+      if (!this._employees.hasNode(id)) {
+        this._employees.addNode(id, e);
+      }
+  
+    } catch(err) {
+      console.log(err);
+    }
+
+  } // onboard
+
+  initPlayerAttributes(e: Employee) {
+
+    let id = this.getId(e.first, e.last);
+
+    if (!this._employees.hasNode(id)) {
+
+      this._employees.updateNode(id, attr => {
+
+        return {
+
+          intelligence: e.attrs.intelligence,
+          charisma: e.attrs.charisma,
+          oration: e.attrs.oration,
+          resilience: e.attrs.resilience,
+          awareness: e.attrs.awareness,
+          analysis: e.attrs.analysis,
+          learning: e.attrs.learning,
+          abstraction: e.attrs.abstraction,
+          execution: e.attrs.execution,
+          leadership: e.attrs.leadership,
+          management: e.attrs.management,
+          social: e.attrs.social,
+          persistence: e.attrs.persistence,
+          integrity: e.attrs.integrity,
+          stamina: e.attrs.stamina,
+          loyalty: e.attrs.loyalty,
+          luck: e.attrs.luck
+
+        }
+
+      });
+    }
+
+  } // initPlayerAttributes
+
   createRelation(id1: string, id2: string) {
 
-    if (!this._employees.hasEdge(id1, id2)) {
+    let a = id1.toLowerCase();
+    let b = id2.toLowerCase();
+
+    if (!this._employees.hasEdge(a, b)) {
       
-      this._employees.addEdge(id1, id2, {
+      this._employees.addEdge(a, b, {
         "status": 0,
         "isManager": false
       });

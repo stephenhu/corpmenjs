@@ -9,6 +9,7 @@
 * salary
 * shares
 * attributes
+* meters
 * relations
 
 ## leveling chart
@@ -16,12 +17,12 @@
 level | individual | management | notes
 ---|---|---|---
 1 | new graduate | |
-2 | experienced | |
-3 | employee 3 | |
-4 | employee 4 | supervisor |
-5 | employee 5 | manager |
-6 | employee 6 | senior manager |
-7 | employee 7 | director |
+2 | junior | |
+3 | senior | |
+4 | staff | supervisor |
+5 | senior staff | manager |
+6 | principal | senior manager |
+7 | senior principal | director |
 8 | | senior director |
 9 | | vice president |
 10 | | senior vice president |

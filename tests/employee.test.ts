@@ -7,7 +7,7 @@ import { Employee } from "../src/employee";
 describe("testing player generation", () => {
 
   const p = new Employee("stephen", "hu");
-  
+
   test("instatiation of class should not be null", () => {
     expect(p).not.toBeNull()
   });

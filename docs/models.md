@@ -14,3 +14,7 @@ initialization will take place during the start of the game, this is a one time 
 * employees
 * hierarchy
 * chapter loading
+
+## graph
+
+contains all employees as nodes, employee relationships are edges.

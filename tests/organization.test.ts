@@ -1,4 +1,5 @@
 import { Organization, PIXEL_CORP, BIG_CORP } from "../src/organization";
+import { Employee } from "../src/employee";
 
 const emps = [
   {first: "Stephen", last: "Hu"},
@@ -20,10 +21,14 @@ describe("testing player relation", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e.first, e.last);  
-  })
+
+    let ne = new Employee(e.first, e.last);
+
+    r.addEmployee(ne);  
   
-  r.createRelation("becky.smith", "laura.kim");
+  });
+
+  r.createRelation("Becky.smith", "laura.kim");
 
   test("get status between becky and laura", () => {
     expect(r.getStatus("becky.smith", "laura.kim")).toEqual(0)
@@ -36,8 +41,12 @@ describe("increment status by 10", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e.first, e.last);  
-  })
+
+    let ne = new Employee(e.first, e.last);
+
+    r.addEmployee(ne);
+
+  });
   
   r.createRelation("becky.smith", "laura.kim");
 
@@ -54,8 +63,12 @@ describe("increment by 5 decrement status by 10", () => {
   let r = new Organization(BIG_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e.first, e.last);  
-  })
+
+    let ne = new Employee(e.first, e.last);
+
+    r.addEmployee(ne);
+
+  });
 
   r.createRelation("becky.smith", "laura.kim");
 
@@ -73,7 +86,11 @@ describe("add direct reports", () => {
   let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e.first, e.last);  
+    
+    let ne = new Employee(e.first, e.last);
+
+    r.addEmployee(ne);
+
   });
 
   r.createRelation("becky.smith", "laura.kim");
@@ -96,7 +113,11 @@ describe("no direct reports", () => {
   let r = new Organization(PIXEL_CORP);
 
   emps.forEach((e) => {
-    r.addEmployee(e.first, e.last);
+
+    let ne = new Employee(e.first, e.last);
+
+    r.addEmployee(ne);
+  
   });
 
   test("get status between becky and laura", () => {
