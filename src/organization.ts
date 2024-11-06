@@ -121,6 +121,7 @@ export class Organization {
 
   } // removeEmployee
 
+  /*
   onboard(e: any) {
 
     let id = this.getId(e.first, e.last);
@@ -137,7 +138,7 @@ export class Organization {
 
   } // onboard
 
-  /*
+  
   initPlayerAttributes(e: Employee) {
 
     let id = this.getId(e.first, e.last);

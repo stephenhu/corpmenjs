@@ -9,6 +9,8 @@ export class Story {
  
   private _chapters: Chapter[];
   private _companies: Organization[];
+  private _points: number = 0;
+  private _progression: number = 0;
 
   constructor() {
   

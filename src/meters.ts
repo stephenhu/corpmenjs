@@ -12,6 +12,9 @@ export class Meters {
   private _decisiveness: number = 0;
   private _corruptability: number = 0;
   private _deceptiveness: number = 0;
+  private _mental: number = 100;
+  private _physical: number = 100;
+  private _emotional: number = 100;
 
   constructor() {
 
