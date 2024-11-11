@@ -1,17 +1,5 @@
 # employee
 
-* id
-* first
-* last
-* title
-* age
-* manager
-* salary
-* shares
-* attributes
-* meters
-* relations
-
 ## leveling chart
 
 level | individual | management | notes
