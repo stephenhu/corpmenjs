@@ -16,7 +16,7 @@ the map will basically be a technology park with multiple companies and office b
 
 ## art
 
-2d, pixel based, like final fantasy 1/2 or the original zelda game.  i want to focus on speed of development, artwork, low animation and make sure that the game play is fun.
+2d, pixel based, like final fantasy 1/2 or the original zelda game.  i want to focus on speed of development and make certain that the game play is fun.
 
 in the future, a sequel could be considered for 3d with higher end graphics and animation.
 

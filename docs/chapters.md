@@ -1,17 +1,19 @@
 # chapters
 
-chapters represent the story mode of the game, completing these will progress players through the story.  to complete a chapter, certain goals or objectives must be met.
+chapters represent the story mode of the game, completing these will progress the story.  to complete a chapter, certain goals or objectives must be met.
 
 1. Favorites
 1. Worst Boss
 1. Becoming a Manager
+1. Corporate Romance
 1. Management Offsite
 1. An org gone bad
 1. Layoffs
 1. Competition
 1. Hostile Takeover
 1. Embezzlement
-1. 
+1. Management Consultants
+1. IPO
 
 ## chapter 1: favorites
 
