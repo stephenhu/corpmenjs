@@ -2,6 +2,7 @@
 
 chapters represent the story mode of the game, completing these will progress the story.  to complete a chapter, certain goals or objectives must be met.
 
+1. Recruitment
 1. Favorites
 1. Worst Boss
 1. Becoming a Manager
@@ -14,6 +15,12 @@ chapters represent the story mode of the game, completing these will progress th
 1. Embezzlement
 1. Management Consultants
 1. IPO
+
+## chapter 0: recruitment
+
+* interview with 996 Corp, Big Inc, Snooty Corp
+* player will get rejected by all but Big Inc
+
 
 ## chapter 1: favorites
 
